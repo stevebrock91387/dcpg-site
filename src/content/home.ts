@@ -6,8 +6,27 @@ export const hero = {
   subhead: 'Decoupage Screenwriting is a Mac app for writing and producing your film — screenplay, breakdowns, stripboard, schedule, and call sheets, all from one script. One purchase. No subscription.',
   primaryCta: { label: 'Get it on the Mac App Store', href: '#' }, // TODO: real App Store URL at launch
   secondaryCta: { label: 'Support', href: '/support' },
-  shot: { src: '/img/write.png', label: 'Write — the screenplay editor' },
 };
+
+export interface Showcase {
+  title: string;
+  body: string;
+  shot: { src: string; label: string };
+}
+
+// Full-width showcase blocks: image on top, title + body underneath (full width of the image).
+export const showcases: Showcase[] = [
+  {
+    title: 'Write in Fountain',
+    body: 'A focused screenplay editor with industry-standard formatting, live inline styling, dual dialogue, and Read Aloud in natural voices.',
+    shot: { src: '/img/write.png', label: 'Write — the screenplay editor' },
+  },
+  {
+    title: 'What you see is what prints',
+    body: 'Real-time, industry-standard pagination and a print-perfect PDF — page counts and runtime you can trust.',
+    shot: { src: '/img/preview.png', label: 'Preview — print-perfect pagination' },
+  },
+];
 
 export interface Feature {
   title: string;
@@ -16,15 +35,6 @@ export interface Feature {
 }
 
 export const features: Feature[] = [
-  {
-    title: 'Write in Fountain',
-    body: 'A focused screenplay editor with industry-standard formatting, live inline styling, dual dialogue, and Read Aloud in natural voices.',
-  },
-  {
-    title: 'What you see is what prints',
-    body: 'Real-time, industry-standard pagination and a print-perfect PDF — page counts and runtime you can trust.',
-    shot: { src: '/img/preview.png', label: 'Preview — print-perfect pagination' },
-  },
   {
     title: 'Run the whole production',
     body: 'From the same script: auto-extracted cast, scene breakdowns, a color-coded stripboard, a shooting schedule, call sheets, and Day Out of Days.',

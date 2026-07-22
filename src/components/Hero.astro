@@ -1,31 +1,23 @@
 ---
 import Wordmark from './Wordmark.astro';
 import Button from './Button.astro';
-import Screenshot from './Screenshot.astro';
 import { hero } from '../content/home.ts';
 ---
 <section class="hero">
-  <div class="hero__lede">
-    <Wordmark size="lg" />
-    <p class="hero__product">Screenwriting</p>
-    <p class="hero__tagline">{hero.tagline}</p>
-    <p class="hero__subhead">{hero.subhead}</p>
-    <div class="hero__cta">
-      <Button href={hero.primaryCta.href} variant="primary">{hero.primaryCta.label}</Button>
-      <Button href={hero.secondaryCta.href} variant="secondary">{hero.secondaryCta.label}</Button>
-    </div>
-  </div>
-  <div class="hero__shot">
-    <Screenshot src={hero.shot.src} label={hero.shot.label} />
+  <Wordmark size="lg" />
+  <p class="hero__product">Screenwriting</p>
+  <p class="hero__tagline">{hero.tagline}</p>
+  <p class="hero__subhead">{hero.subhead}</p>
+  <div class="hero__cta">
+    <Button href={hero.primaryCta.href} variant="primary">{hero.primaryCta.label}</Button>
+    <Button href={hero.secondaryCta.href} variant="secondary">{hero.secondaryCta.label}</Button>
   </div>
 </section>
 
 <style>
-  .hero { display: grid; gap: 2rem; padding: 1.5rem 0 2.5rem; justify-items: center; text-align: center; }
-  .hero__lede { display: grid; gap: 1.1rem; justify-items: center; }
+  .hero { display: grid; gap: 1.1rem; padding: 1.5rem 0 1rem; justify-items: center; text-align: center; }
   .hero__product { margin: -0.6rem 0 0; font-size: var(--step--1); letter-spacing: 0.36em; text-transform: uppercase; color: var(--muted); }
   .hero__tagline { font-family: var(--font-serif); font-size: var(--step-3); margin: 0.4rem 0 0; line-height: 1.1; }
   .hero__subhead { color: var(--muted); font-size: var(--step-1); max-width: 46ch; margin: 0; }
   .hero__cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; margin-top: 0.4rem; }
-  .hero__shot { width: 100%; margin-top: 0.5rem; }
 </style>

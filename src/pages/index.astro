@@ -1,14 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import Showcase from '../components/Showcase.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
-import { features } from '../content/home.ts';
+import { showcases, features } from '../content/home.ts';
 ---
 
 <Base title="Decoupage Screenwriting — write & produce your film, on Mac">
   <Hero />
+  {showcases.map((item) => <Showcase item={item} />)}
   <FeatureGrid features={features} />
-  <p class="draft-note"><em>Draft copy + placeholder screenshots — Steve edits the copy; real screenshots drop into <code>public/img/</code>.</em></p>
+  <p class="draft-note"><em>Draft copy — Steve edits.</em></p>
 </Base>
 
 <style>
