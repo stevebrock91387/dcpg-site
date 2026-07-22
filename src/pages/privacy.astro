@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { Content } from '../content/privacy.md';
+---
+<Base title="Privacy Policy — Decoupage Screenwriting" description="How Decoupage Screenwriting handles your information — local-first, no tracking, cloud reads opt-in.">
+  <article class="prose">
+    <Content />
+  </article>
+</Base>
+
+<style>
+  .prose { max-width: 68ch; }
+  .prose :global(h1) { font-size: var(--step-3); margin-bottom: 0.3rem; }
+  .prose :global(h2) { font-size: var(--step-2); margin-top: 2.2rem; }
+  .prose :global(p), .prose :global(li) { color: var(--ink); }
+  .prose :global(strong) { color: var(--ink); }
+  .prose :global(a) { color: var(--clay); }
+  .prose :global(ul) { padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+  .prose :global(em) { color: var(--muted); }
+</style>
