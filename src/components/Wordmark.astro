@@ -1,0 +1,29 @@
+---
+// The DECOUPAGE wordmark — serif, wide tracking, echoing the app's About screen.
+// `as` lets the home hero render it as an <h1> while the header uses a link.
+interface Props {
+  href?: string;
+  size?: 'sm' | 'lg';
+}
+const { href, size = 'sm' } = Astro.props;
+const cls = `wordmark wordmark--${size}`;
+---
+{href ? (
+  <a href={href} class={cls}>DECOUPAGE</a>
+) : (
+  <span class={cls}>DECOUPAGE</span>
+)}
+
+<style>
+  .wordmark {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+  }
+  .wordmark--sm { font-size: var(--step-1); letter-spacing: 0.24em; }
+  .wordmark--lg { font-size: var(--step-4); letter-spacing: 0.16em; }
+  a.wordmark:hover { color: var(--clay); }
+</style>

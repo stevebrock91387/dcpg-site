@@ -1,0 +1,46 @@
+/* Decoupage design tokens — echoes the app (warm paper/ink + clay accent).
+   Palette derived from the app's DesignTokens + the About-screen accent. Both themes. */
+
+:root {
+  /* Type */
+  --font-serif: ui-serif, "New York", Georgia, "Times New Roman", serif; /* wordmark/display — New York on Mac, the app's audience */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, sans-serif;
+
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --step-1:  clamp(1.2rem, 1.12rem + 0.4vw, 1.4rem);
+  --step-2:  clamp(1.5rem, 1.35rem + 0.75vw, 1.9rem);
+  --step-3:  clamp(1.9rem, 1.6rem + 1.4vw, 2.6rem);
+  --step-4:  clamp(2.4rem, 1.9rem + 2.5vw, 3.6rem);
+
+  /* Light theme (default) — warm cream paper, warm near-black ink, clay accent */
+  --paper:       #F5F1E8;
+  --paper-2:     #EFE9DC; /* slightly deeper surface (cards) */
+  --ink:         #211E1B;
+  --muted:       #6B6459;
+  --clay:        #A85C3B;
+  --clay-ink:    #FBF6EE; /* text on clay */
+  --line:        color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:     #1B1917;
+    --paper-2:   #232019;
+    --ink:       #ECE4D6;
+    --muted:     #9A9184;
+    --clay:      #D4A673; /* lighter clay reads on the dark ground */
+    --clay-ink:  #211E1B;
+    --line:      color-mix(in srgb, var(--ink) 16%, transparent);
+  }
+}
+
+/* Explicit theme override (a future toggle stamps data-theme; wins over the media query) */
+:root[data-theme="light"] {
+  --paper: #F5F1E8; --paper-2: #EFE9DC; --ink: #211E1B; --muted: #6B6459;
+  --clay: #A85C3B; --clay-ink: #FBF6EE; --line: color-mix(in srgb, #211E1B 14%, transparent);
+}
+:root[data-theme="dark"] {
+  --paper: #1B1917; --paper-2: #232019; --ink: #ECE4D6; --muted: #9A9184;
+  --clay: #D4A673; --clay-ink: #211E1B; --line: color-mix(in srgb, #ECE4D6 16%, transparent);
+}

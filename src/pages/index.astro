@@ -1,9 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
+import Wordmark from '../components/Wordmark.astro';
+import Button from '../components/Button.astro';
 ---
 
 <Base title="Decoupage — Screenwriting & Production for Mac">
-  <h1>Decoupage</h1>
-  <p>From script to shoot — screenwriting and film production in one Mac app.</p>
-  <p><em>(Scaffold placeholder — home page content lands in Task 3.)</em></p>
+  <div class="hero">
+    <Wordmark size="lg" />
+    <p class="tagline">From script to shoot — screenwriting and film production in one Mac app.</p>
+    <div class="cta">
+      <Button href="#" variant="primary">Get it on the Mac App Store</Button>
+      <Button href="/support" variant="secondary">Support</Button>
+    </div>
+  </div>
+  <p class="scaffold-note"><em>Design-system preview — real home content lands in Task 3.</em></p>
 </Base>
+
+<style>
+  .hero { text-align: center; padding: 2rem 0 1rem; display: grid; gap: 1.4rem; justify-items: center; }
+  .tagline { font-size: var(--step-1); color: var(--muted); max-width: 34ch; margin: 0; }
+  .cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
+  .scaffold-note { text-align: center; color: var(--muted); font-size: var(--step--1); margin-top: 3rem; }
+</style>
