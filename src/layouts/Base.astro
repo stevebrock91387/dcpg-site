@@ -1,0 +1,80 @@
+---
+// Base layout — shared head, header (wordmark + nav), footer. Design tokens land in Task 2;
+// this is the structural shell so every page has consistent chrome.
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Screenwriting and film production in one Mac app.' } = Astro.props;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/support', label: 'Support' },
+  { href: '/bible/', label: 'Manual' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="wordmark">DECOUPAGE</a>
+      <nav>
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Steve Brock</p>
+      <nav>
+        <a href="/privacy">Privacy</a>
+        <a href="/support">Support</a>
+      </nav>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+  }
+  body { margin: 0; }
+  main { max-width: 68ch; margin: 0 auto; padding: 2rem 1.25rem; }
+  .site-header,
+  .site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 68ch;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: 'New York', ui-serif, Georgia, serif;
+    letter-spacing: 0.28em;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+  }
+  nav { display: flex; gap: 1rem; }
+  nav a { text-decoration: none; color: inherit; }
+  nav a:hover { text-decoration: underline; }
+  .site-footer { border-top: 1px solid color-mix(in srgb, currentColor 15%, transparent); margin-top: 3rem; font-size: 0.9rem; }
+</style>
