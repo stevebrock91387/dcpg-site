@@ -15,7 +15,9 @@ const { tagline, subhead, primaryCta, secondaryCta } = Astro.props;
   <p class="hero__tagline">{tagline}</p>
   <p class="hero__subhead">{subhead}</p>
   <div class="hero__cta">
-    <Button href={primaryCta.href} variant="primary">{primaryCta.label}</Button>
+    <a class="badge" href={primaryCta.href} aria-label="Download Decoupage Screenwriting on the Mac App Store">
+      <img src="/img/mac-app-store-badge.svg" alt="Download on the Mac App Store" width="200" height="60" />
+    </a>
     <Button href={secondaryCta.href} variant="secondary">{secondaryCta.label}</Button>
   </div>
 </section>
@@ -25,5 +27,8 @@ const { tagline, subhead, primaryCta, secondaryCta } = Astro.props;
   .hero__product { margin: -0.6rem 0 0; font-size: var(--step--1); letter-spacing: 0.36em; text-transform: uppercase; color: var(--muted); }
   .hero__tagline { font-family: var(--font-serif); font-size: var(--step-3); margin: 0.4rem 0 0; line-height: 1.1; }
   .hero__subhead { color: var(--muted); font-size: var(--step-1); max-width: 46ch; margin: 0; }
-  .hero__cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; margin-top: 0.4rem; }
+  .hero__cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 0.4rem; }
+  .badge { display: inline-flex; line-height: 0; border-radius: 10px; transition: transform 0.06s ease; }
+  .badge:hover { transform: translateY(-1px); }
+  .badge img { height: 52px; width: auto; display: block; }
 </style>
