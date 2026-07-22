@@ -1,24 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import Wordmark from '../components/Wordmark.astro';
-import Button from '../components/Button.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import { features } from '../content/home.ts';
 ---
 
 <Base title="Decoupage — Screenwriting & Production for Mac">
-  <div class="hero">
-    <Wordmark size="lg" />
-    <p class="tagline">From script to shoot — screenwriting and film production in one Mac app.</p>
-    <div class="cta">
-      <Button href="#" variant="primary">Get it on the Mac App Store</Button>
-      <Button href="/support" variant="secondary">Support</Button>
-    </div>
-  </div>
-  <p class="scaffold-note"><em>Design-system preview — real home content lands in Task 3.</em></p>
+  <Hero />
+  <FeatureGrid features={features} />
+  <p class="draft-note"><em>Draft copy + placeholder screenshots — Steve edits the copy; real screenshots drop into <code>public/img/</code>.</em></p>
 </Base>
 
 <style>
-  .hero { text-align: center; padding: 2rem 0 1rem; display: grid; gap: 1.4rem; justify-items: center; }
-  .tagline { font-size: var(--step-1); color: var(--muted); max-width: 34ch; margin: 0; }
-  .cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
-  .scaffold-note { text-align: center; color: var(--muted); font-size: var(--step--1); margin-top: 3rem; }
+  .draft-note { text-align: center; color: var(--muted); font-size: var(--step--1); margin-top: 2rem; }
 </style>
