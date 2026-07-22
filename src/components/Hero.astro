@@ -1,16 +1,22 @@
 ---
 import Wordmark from './Wordmark.astro';
 import Button from './Button.astro';
-import { hero } from '../content/home.ts';
+interface Props {
+  tagline: string;
+  subhead: string;
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
+}
+const { tagline, subhead, primaryCta, secondaryCta } = Astro.props;
 ---
 <section class="hero">
   <Wordmark size="lg" />
   <p class="hero__product">Screenwriting</p>
-  <p class="hero__tagline">{hero.tagline}</p>
-  <p class="hero__subhead">{hero.subhead}</p>
+  <p class="hero__tagline">{tagline}</p>
+  <p class="hero__subhead">{subhead}</p>
   <div class="hero__cta">
-    <Button href={hero.primaryCta.href} variant="primary">{hero.primaryCta.label}</Button>
-    <Button href={hero.secondaryCta.href} variant="secondary">{hero.secondaryCta.label}</Button>
+    <Button href={primaryCta.href} variant="primary">{primaryCta.label}</Button>
+    <Button href={secondaryCta.href} variant="secondary">{secondaryCta.label}</Button>
   </div>
 </section>
 

@@ -1,13 +1,13 @@
 ---
 import Screenshot from './Screenshot.astro';
-import type { Feature } from '../content/home.ts';
+interface Feature { title: string; body: string; image?: string; imageAlt?: string }
 interface Props { features: Feature[]; }
 const { features } = Astro.props;
 ---
 <section class="features">
   {features.map((f) => (
     <article class="feature">
-      {f.shot && <Screenshot src={f.shot.src} label={f.shot.label} />}
+      {f.image && <Screenshot src={f.image} label={f.imageAlt ?? f.title} />}
       <h2>{f.title}</h2>
       <p>{f.body}</p>
     </article>

@@ -3,16 +3,16 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Showcase from '../components/Showcase.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
-import { showcases, features } from '../content/home.ts';
+import { getHome, getSiteMeta } from '../lib/content';
+
+const home = await getHome();
+const meta = await getSiteMeta();
+const primaryCta = { label: 'Get it on the Mac App Store', href: meta.appStoreUrl || '#' };
+const secondaryCta = { label: 'Support', href: '/support' };
 ---
 
 <Base title="Decoupage Screenwriting — write & produce your film, on Mac">
-  <Hero />
-  {showcases.map((item) => <Showcase item={item} />)}
-  <FeatureGrid features={features} />
-  <p class="draft-note"><em>Draft copy — Steve edits.</em></p>
+  <Hero tagline={home.tagline} subhead={home.subhead} primaryCta={primaryCta} secondaryCta={secondaryCta} />
+  {home.showcases.map((item) => <Showcase item={item} />)}
+  <FeatureGrid features={home.features} />
 </Base>
-
-<style>
-  .draft-note { text-align: center; color: var(--muted); font-size: var(--step--1); margin-top: 2rem; }
-</style>

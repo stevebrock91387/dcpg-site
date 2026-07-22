@@ -1,11 +1,12 @@
 ---
 import Screenshot from './Screenshot.astro';
-import type { Showcase } from '../content/home.ts';
-interface Props { item: Showcase; }
+interface Props {
+  item: { title: string; body: string; image?: string; imageAlt?: string };
+}
 const { item } = Astro.props;
 ---
 <section class="showcase">
-  <Screenshot src={item.shot.src} label={item.shot.label} />
+  <Screenshot src={item.image} label={item.imageAlt ?? item.title} />
   <div class="showcase__text">
     <h2>{item.title}</h2>
     <p>{item.body}</p>
@@ -14,7 +15,6 @@ const { item } = Astro.props;
 
 <style>
   .showcase { display: grid; gap: 1.1rem; margin: 3.5rem 0; }
-  /* text spans the full width of the image above it */
   .showcase__text { display: grid; gap: 0.5rem; }
   .showcase__text h2 { font-size: var(--step-2); margin: 0; }
   .showcase__text p { color: var(--muted); margin: 0; font-size: var(--step-1); max-width: 60ch; }

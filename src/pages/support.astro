@@ -1,34 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import ContactForm from '../components/ContactForm.astro';
+import { getFaq } from '../lib/content';
 
-// DRAFT FAQ copy — Steve edits. Moves to Keystatic in Task 7.
-const faq = [
-  {
-    q: 'How do I install Decoupage Screenwriting?',
-    a: 'Get it from the Mac App Store — it installs and updates like any other Mac app. It runs on macOS on Apple Silicon and Intel Macs.',
-  },
-  {
-    q: 'Is there a subscription?',
-    a: 'No. Decoupage Screenwriting is a one-time purchase — buy it once, it’s yours. No monthly fee, no account required.',
-  },
-  {
-    q: 'Where are my scripts stored?',
-    a: 'On your Mac, in document files you own (.dcpg). Nothing is locked in a cloud account — you can back them up, move them, and open them like any other file.',
-  },
-  {
-    q: 'Is my writing private? How does the AI work?',
-    a: 'The on-device reads (craft checks, scene digests, Read Aloud) run entirely on your Mac — nothing leaves your device. Deeper cloud reads are always opt-in and clearly labeled before anything is sent; you choose whether to use them.',
-  },
-  {
-    q: 'Can I import my existing scripts?',
-    a: 'Yes — import Fountain, Final Draft (.fdx), and Highland files, and export the same formats.',
-  },
-  {
-    q: 'I found a bug or have a request.',
-    a: 'Please send it below — it goes straight to the developer, and includes your email so you get a reply.',
-  },
-];
+const faq = await getFaq(); // Keystatic-managed FAQ (src/content/faq)
 ---
 
 <Base title="Support — Decoupage Screenwriting" description="Help, FAQ, and contact for Decoupage Screenwriting.">
@@ -38,8 +13,8 @@ const faq = [
   <section class="faq">
     {faq.map((item) => (
       <details>
-        <summary>{item.q}</summary>
-        <p>{item.a}</p>
+        <summary>{item.question}</summary>
+        <p>{item.answer}</p>
       </details>
     ))}
   </section>
