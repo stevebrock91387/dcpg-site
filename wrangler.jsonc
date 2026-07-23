@@ -3,7 +3,10 @@
   // The Astro build regenerates dist/server/wrangler.json each build; this root file is the
   // source of truth the Cloudflare Git-connected build reads for compatibility settings.
   // nodejs_compat: Keystatic's reader imports node:fs / node:path — required at runtime.
+  // nodejs_compat_populate_process_env: Keystatic reads credentials via process.env, which
+  // Cloudflare only populates from Worker vars/secrets when this flag is set (set explicitly
+  // rather than relying on the compat-date default).
   "name": "dcpg-site",
   "compatibility_date": "2026-04-15",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"]
 }
