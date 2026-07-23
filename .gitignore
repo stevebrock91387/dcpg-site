@@ -10,3 +10,6 @@ node_modules/
 .env
 .env.production
 public/The-Decoupage-Bible.pdf
+
+# wrangler local state / deploy redirect (regenerated each build)
+.wrangler/
