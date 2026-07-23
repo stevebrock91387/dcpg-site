@@ -12,6 +12,9 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://decoupagescreenwriting.com',
   output: 'static',
-  adapter: cloudflare(),
+  // prerenderEnvironment 'node' (not the default 'workerd'): the workerd prerender crashes at
+  // build time with "TypeError: Invalid header value", leaving the marketing pages empty. Node
+  // prerendering (what runs locally) builds them correctly and is available in Cloudflare CI.
+  adapter: cloudflare({ prerenderEnvironment: 'node' }),
   integrations: [react(), keystatic()],
 });
