@@ -10,3 +10,9 @@ node_modules/
 .env
 .env.production
 public/The-Decoupage-Bible.pdf
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
