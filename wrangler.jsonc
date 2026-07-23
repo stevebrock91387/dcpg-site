@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers config for the Astro (Cloudflare adapter) deployment.
+  // The Astro build regenerates dist/server/wrangler.json each build; this root file is the
+  // source of truth the Cloudflare Git-connected build reads for compatibility settings.
+  // nodejs_compat: Keystatic's reader imports node:fs / node:path — required at runtime.
+  "name": "dcpg-site",
+  "compatibility_date": "2026-04-15",
+  "compatibility_flags": ["nodejs_compat"]
+}

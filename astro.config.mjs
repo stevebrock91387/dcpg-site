@@ -2,15 +2,16 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
+import cloudflare from '@astrojs/cloudflare';
 
-// Keystatic's admin (/keystatic + /api/keystatic) needs a server, which GitHub Pages doesn't have.
-// So we mount the admin ONLY in dev (`astro dev`): edit locally at /keystatic → it writes the
-// content files → commit + push → Pages rebuilds. The PRODUCTION build stays pure-static; pages
-// read content at build time via `@keystatic/core/reader` (no server involved).
-// To upgrade to edit-from-anywhere later: switch storage to Keystatic Cloud + deploy the admin.
-const isDev = process.argv.includes('dev');
-
+// Hosted on Cloudflare Pages so the Keystatic admin can run anywhere.
+// output stays 'static': the marketing pages (/, /support, /privacy, /bible/*) prerender to
+// static assets (free + unlimited on Cloudflare). The Keystatic integration injects its admin
+// routes (/keystatic, /api/keystatic) with prerender:false, so ONLY those become on-demand
+// Functions — reached only while editing. The Cloudflare adapter enables those on-demand routes.
 export default defineConfig({
   site: 'https://decoupagescreenwriting.com',
-  integrations: [react(), ...(isDev ? [keystatic()] : [])],
+  output: 'static',
+  adapter: cloudflare(),
+  integrations: [react(), keystatic()],
 });

@@ -1,9 +1,14 @@
 import { config, fields, singleton } from '@keystatic/core';
 
-// Local storage: edit at /keystatic during `npm run dev`, which writes these JSON files;
-// commit + push and GitHub Pages rebuilds. Content is read at build via @keystatic/core/reader.
+// GitHub storage: the hosted admin (on Cloudflare Pages) authenticates via a GitHub OAuth app
+// and commits edits straight to this repo, which triggers a rebuild. Edit from any browser.
+// Content is still read at build time from the committed JSON files via @keystatic/core/reader,
+// so rendering is independent of the storage/write path.
 export default config({
-  storage: { kind: 'local' },
+  storage: {
+    kind: 'github',
+    repo: { owner: 'stevebrock91387', name: 'dcpg-site' },
+  },
   ui: { brand: { name: 'Decoupage Screenwriting' } },
   singletons: {
     siteMeta: singleton({
